@@ -327,4 +327,9 @@ InputIP:
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         End
     End Sub
+
+    Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
+        On Error Resume Next
+        Me.ShowDialog()
+    End Sub
 End Class
