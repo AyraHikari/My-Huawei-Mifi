@@ -159,6 +159,7 @@ InputIP:
         If asw(0) Is Nothing Or Provider.Text = "No Service" Then
             NotifyIcon1.Icon = My.Resources.no_service
             NotifyIcon1.Text = "No service"
+            SignalBox.Image = My.Resources.icon_signal_00_result
         Else
             If asw(0).InnerText = 0 Then
                 If mifidata = 1 Then
@@ -231,7 +232,7 @@ InputIP:
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles HideBtn.Click
         Me.Hide()
     End Sub
 
@@ -239,7 +240,7 @@ InputIP:
         Me.Close()
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles WebUibtn.Click
         Dim homepage As New Uri("http://" + My.Settings.IpAddress + "/")
         BrowserMifi.WebBrowser1.Url = homepage
         BrowserMifi.Show()
@@ -274,39 +275,8 @@ InputIP:
         BrowserMifi.Show()
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Timer1.Enabled = False
-        GetMsg.Enabled = False
-        Button1.Enabled = False
-        Button2.Enabled = False
-        Button3.Enabled = False
-        ' IP Address
-        If TextBox1.Text = "" Then
-            End
-        End If
-        ' Trying to connect
-        Try
-            webClient.DownloadString("http://" + TextBox1.Text + "/")
-        Catch
-            MsgBox("Could not connect to " + My.Settings.IpAddress + ", please input your IP Address again")
-            Timer1.Enabled = True
-            GetMsg.Enabled = True
-            Button1.Enabled = True
-            Button2.Enabled = True
-            Button3.Enabled = True
-            Return
-        End Try
-        ' Success connected
-        My.Settings.IpAddress = TextBox1.Text
-        Timer1.Enabled = True
-        GetMsg.Enabled = True
-        Button1.Enabled = True
-        Button2.Enabled = True
-        Button3.Enabled = True
-        MsgBox("Connected!")
-        My.Settings.Cookie = webClient.ResponseHeaders.Get("Set-Cookie")
-        TextBox1.Text = My.Settings.IpAddress
-        My.Settings.IpAddress = TextBox1.Text
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles ConnectBtn.Click
+
     End Sub
 
     Private Sub msgpic_DoubleClick(sender As Object, e As EventArgs) Handles msgpic.DoubleClick
@@ -321,7 +291,7 @@ InputIP:
         BrowserMifi.Show()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ExitBtn.Click
         End
     End Sub
 
@@ -333,5 +303,9 @@ InputIP:
     Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
         On Error Resume Next
         Me.Show()
+    End Sub
+
+    Private Sub Advanced_Click(sender As Object, e As EventArgs) Handles AdvancedBtn.Click
+        Advanced.Show()
     End Sub
 End Class

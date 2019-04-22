@@ -29,12 +29,12 @@ Partial Class Form1
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.ExitBtn = New System.Windows.Forms.Button()
+        Me.HideBtn = New System.Windows.Forms.Button()
         Me.Provider = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.WebUibtn = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.ConnectBtn = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.MessageInfo = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.GetMsg = New System.Windows.Forms.Timer(Me.components)
@@ -45,6 +45,7 @@ Partial Class Form1
         Me.BatteryBar = New System.Windows.Forms.ProgressBar()
         Me.BatteryLabel = New System.Windows.Forms.Label()
         Me.UserConnected = New System.Windows.Forms.Label()
+        Me.AdvancedBtn = New System.Windows.Forms.Button()
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.msgpic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SignalBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,23 +80,23 @@ Partial Class Form1
         '
         Me.Timer1.Interval = 1000
         '
-        'Button1
+        'ExitBtn
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 258)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(275, 30)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Exit"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.ExitBtn.Location = New System.Drawing.Point(12, 258)
+        Me.ExitBtn.Name = "ExitBtn"
+        Me.ExitBtn.Size = New System.Drawing.Size(275, 30)
+        Me.ExitBtn.TabIndex = 4
+        Me.ExitBtn.Text = "Exit"
+        Me.ExitBtn.UseVisualStyleBackColor = True
         '
-        'Button2
+        'HideBtn
         '
-        Me.Button2.Location = New System.Drawing.Point(12, 222)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(275, 30)
-        Me.Button2.TabIndex = 5
-        Me.Button2.Text = "Hide"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.HideBtn.Location = New System.Drawing.Point(12, 222)
+        Me.HideBtn.Name = "HideBtn"
+        Me.HideBtn.Size = New System.Drawing.Size(275, 30)
+        Me.HideBtn.TabIndex = 5
+        Me.HideBtn.Text = "Hide"
+        Me.HideBtn.UseVisualStyleBackColor = True
         '
         'Provider
         '
@@ -107,14 +108,14 @@ Partial Class Form1
         Me.Provider.TabIndex = 2
         Me.Provider.Text = "Loading..."
         '
-        'Button3
+        'WebUibtn
         '
-        Me.Button3.Location = New System.Drawing.Point(12, 186)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(275, 30)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Open WebUi"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.WebUibtn.Location = New System.Drawing.Point(12, 186)
+        Me.WebUibtn.Name = "WebUibtn"
+        Me.WebUibtn.Size = New System.Drawing.Size(135, 30)
+        Me.WebUibtn.TabIndex = 3
+        Me.WebUibtn.Text = "Open WebUi"
+        Me.WebUibtn.UseVisualStyleBackColor = True
         '
         'TextBox1
         '
@@ -124,14 +125,14 @@ Partial Class Form1
         Me.TextBox1.TabIndex = 1
         Me.TextBox1.Text = "192.168.8.1"
         '
-        'Button4
+        'ConnectBtn
         '
-        Me.Button4.Location = New System.Drawing.Point(212, 157)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 2
-        Me.Button4.Text = "Connect"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.ConnectBtn.Location = New System.Drawing.Point(212, 157)
+        Me.ConnectBtn.Name = "ConnectBtn"
+        Me.ConnectBtn.Size = New System.Drawing.Size(75, 23)
+        Me.ConnectBtn.TabIndex = 2
+        Me.ConnectBtn.Text = "Connect"
+        Me.ConnectBtn.UseVisualStyleBackColor = True
         '
         'Label1
         '
@@ -218,11 +219,21 @@ Partial Class Form1
         Me.UserConnected.TabIndex = 13
         Me.UserConnected.Text = "Connecting..."
         '
+        'AdvancedBtn
+        '
+        Me.AdvancedBtn.Location = New System.Drawing.Point(152, 186)
+        Me.AdvancedBtn.Name = "AdvancedBtn"
+        Me.AdvancedBtn.Size = New System.Drawing.Size(135, 30)
+        Me.AdvancedBtn.TabIndex = 14
+        Me.AdvancedBtn.Text = "Advanced"
+        Me.AdvancedBtn.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(300, 300)
+        Me.Controls.Add(Me.AdvancedBtn)
         Me.Controls.Add(Me.UserConnected)
         Me.Controls.Add(Me.BatteryLabel)
         Me.Controls.Add(Me.BatteryBar)
@@ -231,12 +242,12 @@ Partial Class Form1
         Me.Controls.Add(Me.SignalBox)
         Me.Controls.Add(Me.msgpic)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.ConnectBtn)
         Me.Controls.Add(Me.TextBox1)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.WebUibtn)
         Me.Controls.Add(Me.Provider)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.HideBtn)
+        Me.Controls.Add(Me.ExitBtn)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.Name = "Form1"
@@ -251,15 +262,15 @@ Partial Class Form1
     End Sub
     Friend WithEvents NotifyIcon1 As NotifyIcon
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents ExitBtn As Button
+    Friend WithEvents HideBtn As Button
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Provider As Label
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents Button3 As Button
+    Friend WithEvents WebUibtn As Button
     Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button4 As Button
+    Friend WithEvents ConnectBtn As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents MessageInfo As NotifyIcon
     Friend WithEvents GetMsg As Timer
@@ -270,4 +281,5 @@ Partial Class Form1
     Friend WithEvents BatteryBar As ProgressBar
     Friend WithEvents BatteryLabel As Label
     Friend WithEvents UserConnected As Label
+    Friend WithEvents AdvancedBtn As Button
 End Class
