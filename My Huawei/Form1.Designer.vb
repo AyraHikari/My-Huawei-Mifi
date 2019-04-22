@@ -62,7 +62,7 @@ Partial Class Form1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 222)
+        Me.Button1.Location = New System.Drawing.Point(12, 258)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(275, 30)
         Me.Button1.TabIndex = 4
@@ -71,7 +71,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(12, 258)
+        Me.Button2.Location = New System.Drawing.Point(12, 222)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(275, 30)
         Me.Button2.TabIndex = 5
@@ -82,7 +82,7 @@ Partial Class Form1
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.ExitToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(153, 70)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(149, 48)
         '
         'ToolStripMenuItem1
         '
