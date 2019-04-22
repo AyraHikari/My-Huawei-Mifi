@@ -217,7 +217,11 @@ InputIP:
             NotifyIcon1.Text += xmlsignal.GetElementsByTagName("BatteryPercent")(0).InnerText + "% battery" + vbCrLf
             curdl = FormatNumber(CDbl(Int(curdl) / 1024000), 2)
             curup = FormatNumber(CDbl(Int(curup) / 1024000), 2)
-            NotifyIcon1.Text += curdl + " MB / " + curup + " MB"
+            Try
+                NotifyIcon1.Text += curdl + " MB / " + curup + " MB"
+            Catch ex As Exception
+                NotifyIcon1.Text += Int(curdl) + " MB / " + Int(curup) + " MB"
+            End Try
             NetUsageLabel.Text = "Network Usage: " + curdl + " MB / " + curup + " MB"
             BatteryBar.Value = xmlsignal.GetElementsByTagName("BatteryPercent")(0).InnerText
             BatteryLabel.Text = xmlsignal.GetElementsByTagName("BatteryPercent")(0).InnerText + "%"
