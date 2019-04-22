@@ -56,6 +56,8 @@ InputIP:
             xmlprov.LoadXml(prov)
             If xmlprov.GetElementsByTagName("FullName").Count = 0 Then
                 Provider.Text = "No Service"
+            ElseIf xmlprov.GetElementsByTagName("FullName")(0).InnerText = 51009 Then
+                Provider.Text = "Smartfren"
             Else
                 Provider.Text = Str(xmlprov.GetElementsByTagName("FullName")(0).InnerText)
             End If
