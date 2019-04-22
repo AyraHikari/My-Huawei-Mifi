@@ -229,17 +229,8 @@ InputIP:
         End If
     End Sub
 
-    Private Sub NotifyIcon1_DoubleClick(sender As Object, e As EventArgs) Handles NotifyIcon1.DoubleClick
-        On Error Resume Next
-        Me.ShowDialog()
-    End Sub
-
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Me.Hide()
-    End Sub
-
-    Private Sub NotifyIcon1_MouseClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseClick
-        ContextMenuStrip1.Show(Me, Me.PointToClient(MousePosition))
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
@@ -249,7 +240,7 @@ InputIP:
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim homepage As New Uri("http://" + My.Settings.IpAddress + "/")
         BrowserMifi.WebBrowser1.Url = homepage
-        BrowserMifi.ShowDialog()
+        BrowserMifi.Show()
     End Sub
 
     Private Sub GetMsg_Tick(sender As Object, e As EventArgs) Handles GetMsg.Tick
@@ -278,7 +269,7 @@ InputIP:
     Private Sub MessageInfo_Click(sender As Object, e As MouseEventArgs) Handles MessageInfo.MouseClick
         Dim homepage As New Uri("http://" + My.Settings.IpAddress + "/html/smsinbox.html")
         BrowserMifi.WebBrowser1.Url = homepage
-        BrowserMifi.ShowDialog()
+        BrowserMifi.Show()
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -319,13 +310,13 @@ InputIP:
     Private Sub msgpic_DoubleClick(sender As Object, e As EventArgs) Handles msgpic.DoubleClick
         Dim homepage As New Uri("http://" + My.Settings.IpAddress + "/html/smsinbox.html")
         BrowserMifi.WebBrowser1.Url = homepage
-        BrowserMifi.ShowDialog()
+        BrowserMifi.Show()
     End Sub
 
     Private Sub MessageInfo_BalloonTipClicked(sender As Object, e As EventArgs) Handles MessageInfo.BalloonTipClicked
         Dim homepage As New Uri("http://" + My.Settings.IpAddress + "/html/smsinbox.html")
         BrowserMifi.WebBrowser1.Url = homepage
-        BrowserMifi.ShowDialog()
+        BrowserMifi.Show()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -334,6 +325,11 @@ InputIP:
 
     Private Sub ToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem1.Click
         On Error Resume Next
-        Me.ShowDialog()
+        Me.Show()
+    End Sub
+
+    Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
+        On Error Resume Next
+        Me.Show()
     End Sub
 End Class
