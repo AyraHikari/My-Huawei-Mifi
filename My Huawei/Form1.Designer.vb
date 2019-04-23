@@ -33,9 +33,6 @@ Partial Class Form1
         Me.HideBtn = New System.Windows.Forms.Button()
         Me.Provider = New System.Windows.Forms.Label()
         Me.WebUibtn = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.ConnectBtn = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.MessageInfo = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.GetMsg = New System.Windows.Forms.Timer(Me.components)
         Me.msgpic = New System.Windows.Forms.PictureBox()
@@ -46,6 +43,7 @@ Partial Class Form1
         Me.BatteryLabel = New System.Windows.Forms.Label()
         Me.UserConnected = New System.Windows.Forms.Label()
         Me.AdvancedBtn = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.ContextMenuStrip1.SuspendLayout()
         CType(Me.msgpic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SignalBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -116,32 +114,6 @@ Partial Class Form1
         Me.WebUibtn.TabIndex = 3
         Me.WebUibtn.Text = "Open WebUi"
         Me.WebUibtn.UseVisualStyleBackColor = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(77, 159)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(129, 20)
-        Me.TextBox1.TabIndex = 1
-        Me.TextBox1.Text = "192.168.8.1"
-        '
-        'ConnectBtn
-        '
-        Me.ConnectBtn.Location = New System.Drawing.Point(212, 157)
-        Me.ConnectBtn.Name = "ConnectBtn"
-        Me.ConnectBtn.Size = New System.Drawing.Size(75, 23)
-        Me.ConnectBtn.TabIndex = 2
-        Me.ConnectBtn.Text = "Connect"
-        Me.ConnectBtn.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(13, 162)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(58, 13)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "IP Address"
         '
         'MessageInfo
         '
@@ -228,11 +200,22 @@ Partial Class Form1
         Me.AdvancedBtn.Text = "Advanced"
         Me.AdvancedBtn.UseVisualStyleBackColor = True
         '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(13, 163)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(134, 17)
+        Me.CheckBox1.TabIndex = 15
+        Me.CheckBox1.Text = "Show Overlay Window"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(300, 300)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.AdvancedBtn)
         Me.Controls.Add(Me.UserConnected)
         Me.Controls.Add(Me.BatteryLabel)
@@ -241,9 +224,6 @@ Partial Class Form1
         Me.Controls.Add(Me.NetwkTypeLabel)
         Me.Controls.Add(Me.SignalBox)
         Me.Controls.Add(Me.msgpic)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ConnectBtn)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.WebUibtn)
         Me.Controls.Add(Me.Provider)
         Me.Controls.Add(Me.HideBtn)
@@ -269,9 +249,6 @@ Partial Class Form1
     Friend WithEvents Provider As Label
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents WebUibtn As Button
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents ConnectBtn As Button
-    Friend WithEvents Label1 As Label
     Friend WithEvents MessageInfo As NotifyIcon
     Friend WithEvents GetMsg As Timer
     Friend WithEvents msgpic As PictureBox
@@ -282,4 +259,5 @@ Partial Class Form1
     Friend WithEvents BatteryLabel As Label
     Friend WithEvents UserConnected As Label
     Friend WithEvents AdvancedBtn As Button
+    Friend WithEvents CheckBox1 As CheckBox
 End Class

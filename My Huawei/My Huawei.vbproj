@@ -76,6 +76,12 @@
     <Compile Include="BrowserMifi.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FloatingInfo.Designer.vb">
+      <DependentUpon>FloatingInfo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FloatingInfo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BrowserMifi.resx">
       <DependentUpon>BrowserMifi.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FloatingInfo.resx">
+      <DependentUpon>FloatingInfo.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
@@ -232,6 +241,84 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon_signal_05_result.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\devices.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disabled-0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disabled-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disabled-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disabled-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disabled-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disabled-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loading.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\roaming-0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\roaming-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\roaming-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\roaming-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\roaming-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\roaming-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signal-0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signal-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signal-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signal-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signal-4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\signal-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upload.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

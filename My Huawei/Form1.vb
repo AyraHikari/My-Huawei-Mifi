@@ -6,6 +6,8 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' IP Address
         Dim IP
+        FloatingInfo.Show()
+        FloatingInfo.Visible = False
         If My.Settings.FirstTime = False Then
 InputIP:
             IP = InputBox("Input Your Mifi IP Address")
@@ -26,7 +28,6 @@ InputIP:
         Timer1.Enabled = True
         GetMsg.Enabled = True
         My.Settings.Cookie = webClient.ResponseHeaders.Get("Set-Cookie")
-        TextBox1.Text = My.Settings.IpAddress
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -56,10 +57,13 @@ InputIP:
             xmlprov.LoadXml(prov)
             If xmlprov.GetElementsByTagName("FullName").Count = 0 Then
                 Provider.Text = "No Service"
+                FloatingInfo.ProviderLabel.Text = "No Service"
             ElseIf xmlprov.GetElementsByTagName("FullName")(0).InnerText = 51009 Then
                 Provider.Text = "Smartfren"
+                FloatingInfo.ProviderLabel.Text = "Smartfren"
             Else
                 Provider.Text = Str(xmlprov.GetElementsByTagName("FullName")(0).InnerText)
+                FloatingInfo.ProviderLabel.Text = Str(xmlprov.GetElementsByTagName("FullName")(0).InnerText)
             End If
         End If
 
@@ -143,14 +147,18 @@ InputIP:
         End If
         If netname = "No Service" Then
             NetwkTypeLabel.Text = "X"
+            FloatingInfo.NetType.Text = "X"
         Else
             NetwkTypeLabel.Text = netname
+            FloatingInfo.NetType.Text = netname
         End If
 
         ' Get trafic info
         Dim xmltraf As New XmlDocument()
         Dim trafik = webClient.DownloadString("http://" + My.Settings.IpAddress + "/api/monitoring/traffic-statistics")
         xmltraf.LoadXml(trafik)
+        Dim totdl = xmltraf.GetElementsByTagName("TotalDownload")(0).InnerText
+        Dim totup = xmltraf.GetElementsByTagName("TotalUpload")(0).InnerText
         Dim curdl = xmltraf.GetElementsByTagName("CurrentDownload")(0).InnerText
         Dim curup = xmltraf.GetElementsByTagName("CurrentUpload")(0).InnerText
 
@@ -170,6 +178,7 @@ InputIP:
                     NotifyIcon1.Text = netname + ": 0 bar" + vbCrLf
                 End If
                 SignalBox.Image = My.Resources.icon_signal_00_result
+                FloatingInfo.SignalImg.Image = My.Resources.signal_01
             ElseIf asw(0).InnerText = 1 Then
                 If mifidata = 1 Then
                     NotifyIcon1.Icon = My.Resources.signal_1
@@ -179,6 +188,7 @@ InputIP:
                     NotifyIcon1.Text = netname + ": 1 bar" + vbCrLf
                 End If
                 SignalBox.Image = My.Resources.icon_signal_01_result
+                FloatingInfo.SignalImg.Image = My.Resources.signal_11
             ElseIf asw(0).InnerText = 2 Then
                 If mifidata = 1 Then
                     NotifyIcon1.Icon = My.Resources.signal_2
@@ -188,6 +198,7 @@ InputIP:
                     NotifyIcon1.Text = netname + ": 2 bars" + vbCrLf
                 End If
                 SignalBox.Image = My.Resources.icon_signal_02_result
+                FloatingInfo.SignalImg.Image = My.Resources.signal_21
             ElseIf asw(0).InnerText = 3 Then
                 If mifidata = 1 Then
                     NotifyIcon1.Icon = My.Resources.signal_3
@@ -197,6 +208,7 @@ InputIP:
                     NotifyIcon1.Text = netname + ": 3 bars" + vbCrLf
                 End If
                 SignalBox.Image = My.Resources.icon_signal_03_result
+                FloatingInfo.SignalImg.Image = My.Resources.signal_31
             ElseIf asw(0).InnerText = 4 Then
                 If mifidata = 1 Then
                     NotifyIcon1.Icon = My.Resources.signal_4
@@ -206,6 +218,7 @@ InputIP:
                     NotifyIcon1.Text = netname + ": 4 bars" + vbCrLf
                 End If
                 SignalBox.Image = My.Resources.icon_signal_04_result
+                FloatingInfo.SignalImg.Image = My.Resources.signal_41
             ElseIf asw(0).InnerText = 5 Then
                 If mifidata = 1 Then
                     NotifyIcon1.Icon = My.Resources.signal_5
@@ -215,20 +228,64 @@ InputIP:
                     NotifyIcon1.Text = netname + ": 5 bars" + vbCrLf
                 End If
                 SignalBox.Image = My.Resources.icon_signal_05_result
+                FloatingInfo.SignalImg.Image = My.Resources.signal_51
             End If
             NotifyIcon1.Text += xmlsignal.GetElementsByTagName("CurrentWifiUser")(0).InnerText + " users connected" + vbCrLf
             NotifyIcon1.Text += xmlsignal.GetElementsByTagName("BatteryPercent")(0).InnerText + "% battery" + vbCrLf
-            curdl = FormatNumber(CDbl(Int(curdl) / 1024000), 2)
-            curup = FormatNumber(CDbl(Int(curup) / 1024000), 2)
+            ' Total Download
+            If totdl <= 1024 Then
+                totdl = FormatNumber(CDbl(Int(totdl)), 2) + " Byte"
+            ElseIf totdl >= 1024 And totdl <= 1024000 Then
+                totdl = FormatNumber(CDbl(Int(totdl) / 1024), 2) + " KB"
+            ElseIf totdl >= 1024000 And totdl <= 1024000000 Then
+                totdl = FormatNumber(CDbl(Int(totdl) / 1024000), 2) + " MB"
+            ElseIf totdl >= 1024000000 Then
+                totdl = FormatNumber(CDbl(Int(totdl) / 1024000000), 2) + " GB"
+            End If
+            ' Total Upload
+            If totup <= 1024 Then
+                totup = FormatNumber(CDbl(Int(totup)), 2) + " Byte"
+            ElseIf totup >= 1024 And totup <= 1024000 Then
+                totup = FormatNumber(CDbl(Int(totup) / 1024), 2) + " KB"
+            ElseIf totup >= 1024000 And totup <= 1024000000 Then
+                totup = FormatNumber(CDbl(Int(totup) / 1024000), 2) + " MB"
+            ElseIf totup >= 1024000000 Then
+                totup = FormatNumber(CDbl(Int(totup) / 1024000000), 2) + " GB"
+            End If
+            ' Current Download
+            If curdl <= 1024 Then
+                curdl = FormatNumber(CDbl(Int(curdl)), 2) + " Byte"
+            ElseIf curdl >= 1024 And curdl <= 1024000 Then
+                curdl = FormatNumber(CDbl(Int(curdl) / 1024), 2) + " KB"
+            ElseIf curdl >= 1024000 And curdl <= 1024000000 Then
+                curdl = FormatNumber(CDbl(Int(curdl) / 1024000), 2) + " MB"
+            ElseIf curdl >= 1024000000 Then
+                curdl = FormatNumber(CDbl(Int(curdl) / 1024000000), 2) + " GB"
+            End If
+            ' Current Upload
+            If curup <= 1024 Then
+                curup = FormatNumber(CDbl(Int(curup)), 2) + " Byte"
+            ElseIf curup >= 1024 And curup <= 1024000 Then
+                curup = FormatNumber(CDbl(Int(curup) / 1024), 2) + " KB"
+            ElseIf curup >= 1024000 And curup <= 1024000000 Then
+                curup = FormatNumber(CDbl(Int(curup) / 1024000), 2) + " MB"
+            ElseIf curup >= 1024000000 Then
+                curup = FormatNumber(CDbl(Int(curup) / 1024000000), 2) + " GB"
+            End If
+
             Try
-                NotifyIcon1.Text += curdl + " MB / " + curup + " MB"
+                NotifyIcon1.Text += curdl + " / " + curup + " "
             Catch ex As Exception
-                NotifyIcon1.Text += Int(curdl) + " MB / " + Int(curup) + " MB"
+
             End Try
-            NetUsageLabel.Text = "Network Usage: " + curdl + " MB / " + curup + " MB"
+            NetUsageLabel.Text = "Network Usage: " + curdl + " / " + curup
+            FloatingInfo.UploadText.Text = curup + " - " + totup
+            FloatingInfo.DownloadText.Text = curdl + " - " + totdl
             BatteryBar.Value = xmlsignal.GetElementsByTagName("BatteryPercent")(0).InnerText
+            FloatingInfo.BatteryLabel.Text = "Battery " + xmlsignal.GetElementsByTagName("BatteryPercent")(0).InnerText + "%"
             BatteryLabel.Text = xmlsignal.GetElementsByTagName("BatteryPercent")(0).InnerText + "%"
             UserConnected.Text = xmlsignal.GetElementsByTagName("CurrentWifiUser")(0).InnerText + " users connected"
+            FloatingInfo.UsersLabel.Text = xmlsignal.GetElementsByTagName("CurrentWifiUser")(0).InnerText + " users"
         End If
     End Sub
 
@@ -276,10 +333,6 @@ InputIP:
         BrowserMifi.Show()
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles ConnectBtn.Click
-
-    End Sub
-
     Private Sub msgpic_DoubleClick(sender As Object, e As EventArgs) Handles msgpic.DoubleClick
         Dim homepage As New Uri("http://" + My.Settings.IpAddress + "/html/smsinbox.html")
         BrowserMifi.WebBrowser1.Url = homepage
@@ -308,5 +361,13 @@ InputIP:
 
     Private Sub Advanced_Click(sender As Object, e As EventArgs) Handles AdvancedBtn.Click
         Advanced.Show()
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If CheckBox1.Checked = True Then
+            FloatingInfo.Visible = True
+        Else
+            FloatingInfo.Visible = False
+        End If
     End Sub
 End Class

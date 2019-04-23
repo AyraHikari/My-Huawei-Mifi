@@ -9,13 +9,15 @@ Please note this is not full release, there is so many bugs, i will fix it later
 
 - [x] Full work status checking
 - [x] Notification when got message
+- [x] Add option to always on top
 - [ ] Overlay form for saving and connecting
 - [ ] Improve script
 - [ ] Using API to login
 - [ ] Fix known bugs
-- [ ] Add option to always on top
 - [ ] Improve Ui
 - [ ] More option list
+- [ ] Roaming icon
+- [ ] Theme color
 
 ## License
 
