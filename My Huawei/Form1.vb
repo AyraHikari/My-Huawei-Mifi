@@ -266,6 +266,7 @@ InputIP:
             End If
         Else
             MessageInfo.Visible = False
+            msgpic.Visible = False
         End If
     End Sub
 
